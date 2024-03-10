@@ -13,6 +13,13 @@ urlpatterns = [
 ##########################################################################
 #                               Search                                   #
 ##########################################################################
-    path('search_user/', SearchUser, name="search_user"),
-    path('search_users/', SearchUsers, name="search_users"),
+    path('search_users/', buscar, name="search_users"),
+    path('search_user/', users_search, name="search_users"),
+##########################################################################
+#                               Cheques                                  #
+##########################################################################
+    path('cheques', ChequesList.as_view(), name="cheques"),
+    path('cheques_create', ChequesCreate.as_view(), name="cheques_create"),
+    path('cheque_delete/<int:pk>', ChequesDelete.as_view(), name="cheque_delete"),
+    path('cheques_update/<int:pk>', ChequesUpdate.as_view(), name='cheques_update'),
 ]

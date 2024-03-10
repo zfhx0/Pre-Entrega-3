@@ -13,6 +13,10 @@ from django.views.generic import ListView, DeleteView, CreateView, UpdateView
 def home(request):
     return render(request, "aplicacion/index.html") 
 
+def users_search(request):
+    return render(request, "users_search.html") 
+
+#users
 class UserList(ListView):
     model = User
     template_name = "aplicacion/User_list.html"
@@ -32,26 +36,51 @@ class UserUpdate(UpdateView):
     fields = ["nombre", "apellido", "email", "dni"]
     success_url = reverse_lazy("users")
 
-def SearchUser(request):
-    return render(request, "aplicacion/search.html")
+def buscar(request):
+    cadena = request.GET.get('cadena')
+    if cadena:
+        resultados = User.objects.filter(nombre__icontains=cadena)
+    else:
+        resultados = None
+    return render(request, 'users_search.html', {'resultados': resultados})
 
-def SearchUsers(request):
-    if request.GET["search"]:
-        cadena = request.GET["search"]
-        Users = User.objects.filter(nombre__icontains=cadena)
-        context = {"User": Users}
-        return render(request, "aplicacion/search.html", context)
+#cheques
+class ChequesList(ListView):
+    model = Cheques
+    template_name = "aplicacion/Cheques_list.html"
+    context_object_name = 'Cheques_list'
 
+class ChequesCreate(CreateView):
+    model = Cheques
+    fields = ["banco", "fecha", "monto", "numero", "perteneciente"]
+    success_url = reverse_lazy("cheques")
 
-    context = {'User': Users.objects.all()}
-    return render(request, "aplicacion/search.html", context)
+class ChequesDelete(DeleteView):
+    model = Cheques
+    success_url = reverse_lazy("cheques")
 
-#def SearchUsers(request):
-#    cadena = request.GET.get('search')  
-#    if cadena:
-#        users = User.objects.filter(nombre__icontains=cadena)
-#    else:
-#        users = User.objects.all()
+class ChequesUpdate(UpdateView):
+    model = Cheques
+    fields = ["banco", "fecha", "monto", "numero", "perteneciente"]
+    success_url = reverse_lazy("cheques")
 
-#    context = {"users": users}
-#    return render(request, "aplicacion/User_list.html", context)
+#clientes
+    
+class ClienteList(ListView):
+    model = Cliente
+    template_name = "aplicacion/Clientes_list.html"
+    context_object_name = 'Clientes_list'
+
+class UserCreate(CreateView):
+    model = Cliente
+    fields = ["nombre", "apellido", "email", "dni"]
+    success_url = reverse_lazy("clientes")
+
+class UserDelete(DeleteView):
+    model = Cliente
+    success_url = reverse_lazy("clientes")
+
+class UserUpdate(UpdateView):
+    model = Cliente
+    fields = ["nombre", "apellido", "email", "dni"]
+    success_url = reverse_lazy("clientes")

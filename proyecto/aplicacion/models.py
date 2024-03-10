@@ -15,12 +15,12 @@ class User(models.Model):
         return f"{self.nombre}, {self.apellido}"
 
 
-class Cheque(models.Model):
+class Cheques(models.Model):
     banco = models.CharField(max_length=30)
-    perteneciente = models.IntegerField() #se refiere a la visibilidad. cada usuario tiene una id, y el objeto solo sera visible si le pertenece.
     fecha = models.DateField()
     monto = models.IntegerField()
     numero = models.IntegerField()
+    perteneciente = models.IntegerField() #se refiere a la visibilidad. cada usuario tiene una id, y el objeto solo sera visible si le pertenece.
 
     class Meta:
         ordering = ["numero"]

@@ -10,5 +10,5 @@ from .models import *
 
 admin.site.register(PagoPendiente)
 admin.site.register(Cliente)
-admin.site.register(Cheque)
+admin.site.register(Cheques)
 admin.site.register(User)
