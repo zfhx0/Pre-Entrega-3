@@ -43,10 +43,10 @@ class Cliente(models.Model):
 
 class PagoPendiente(models.Model):
     deudor = models.CharField(max_length=30)
-    perteneciente = models.IntegerField()
     vencimiento = models.DateField()
     monto = models.IntegerField()
     numero = models.IntegerField()
+    perteneciente = models.IntegerField()
     
     class Meta:
         ordering = ["numero"]

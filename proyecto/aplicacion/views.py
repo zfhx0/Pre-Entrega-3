@@ -65,22 +65,41 @@ class ChequesUpdate(UpdateView):
     success_url = reverse_lazy("cheques")
 
 #clientes
-    
 class ClienteList(ListView):
     model = Cliente
     template_name = "aplicacion/Clientes_list.html"
     context_object_name = 'Clientes_list'
 
-class UserCreate(CreateView):
+class ClienteCreate(CreateView):
     model = Cliente
-    fields = ["nombre", "apellido", "email", "dni"]
+    fields = ["nombre", "apellido", "email", "dni", "empresa"]
     success_url = reverse_lazy("clientes")
 
-class UserDelete(DeleteView):
+class ClienteDelete(DeleteView):
     model = Cliente
     success_url = reverse_lazy("clientes")
 
-class UserUpdate(UpdateView):
+class ClienteUpdate(UpdateView):
     model = Cliente
-    fields = ["nombre", "apellido", "email", "dni"]
+    fields = ["nombre", "apellido", "email", "dni", "empresa"]
     success_url = reverse_lazy("clientes")
+
+#pagos
+class PagoList(ListView):
+    model = PagoPendiente
+    template_name = "aplicacion/pagos_list.html"
+    context_object_name = 'pagos_list'
+
+class PagoCreate(CreateView):
+    model = PagoPendiente
+    fields = ["deudor", "vencimiento", "monto", "numero", "perteneciente"]
+    success_url = reverse_lazy("pagos")
+
+class PagoDelete(DeleteView):
+    model = PagoPendiente
+    success_url = reverse_lazy("pagos")
+
+class PagoUpdate(UpdateView):
+    model = PagoPendiente
+    fields = ["deudor", "vencimiento", "monto", "numero", "perteneciente"]
+    success_url = reverse_lazy("pagos")
