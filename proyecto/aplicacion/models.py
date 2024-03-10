@@ -13,7 +13,7 @@ class User(models.Model):
 
     def str(self):
         return f"{self.nombre}, {self.apellido}"
-    
+
 
 class Cheque(models.Model):
     banco = models.CharField(max_length=30)
@@ -21,7 +21,7 @@ class Cheque(models.Model):
     fecha = models.DateField()
     monto = models.IntegerField()
     numero = models.IntegerField()
-    
+
     class Meta:
         ordering = ["numero"]
 

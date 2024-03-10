@@ -49,13 +49,13 @@
             <td>{{ u.dni }}</td>
             <td>
                 <a
-                  href="{% url 'user_delete' u.id %}"
+                  href="{% url 'user_update' u.id %}"
                   class="btn btn-primary"
                   style="--bs-btn-padding-y: .75rem; --bs-btn-padding-x: .75rem; --bs-btn-font-size: .75rem;"
                   ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
                 </a>
                 <a
-                  href="{% url 'home' %}"
+                  href="{% url 'user_delete' u.id %}"
                   class="btn btn-danger"
                   style="--bs-btn-padding-y: .75rem; --bs-btn-padding-x: .75rem; --bs-btn-font-size: .75rem;"
                   ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
@@ -69,5 +69,5 @@
 
 
 {% block texto_2 %}
-    
+
 {% endblock texto_2 %}

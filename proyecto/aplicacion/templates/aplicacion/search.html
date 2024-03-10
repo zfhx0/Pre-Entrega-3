@@ -1,0 +1,15 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo_pestañas %}
+<title>Search Users</title>
+{% endblock titulo_pestañas %}
+
+
+{% block texto_1 %}
+<form action="{% url 'search_users' %}" method="get">
+    {% csrf_token %}
+    <p>Input the user that you want to search: <input type="text" name="search" id="search"></p>
+    <input type="submit" value="Search">
+</form>
+{% endblock texto_1 %}
