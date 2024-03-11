@@ -8,7 +8,7 @@ urlpatterns = [
 #                               Search                                   #
 ##########################################################################
     path('search_users/', buscar, name="search_users"),
-    path('search_user/', users_search, name="search_users"),
+    path('search_user/', users_search, name="search_user"),
 ##########################################################################
 #                               Users                                    #
 ##########################################################################

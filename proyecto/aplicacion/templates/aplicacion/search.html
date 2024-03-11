@@ -7,8 +7,9 @@
 
 
 {% block texto_1 %}
-<form action="{% url 'search_user/' %}" method="GET">
-    <input type="text" name="cadena" placeholder="Search users">
-    <button type="submit">Search</button>
+<form class="d-flex" action="{% url 'search_users' %}" method=POST>
+    {% crsf_token %}
+    <input  class="form-control me-2" type="search" name="buscar" placeholder="Search users for name">
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
 </form>
 {% endblock texto_1 %}

@@ -7,6 +7,12 @@ from django.views.generic import ListView, DeleteView, CreateView, UpdateView
 
 # Create your views here.
 
+def buscar(request):
+    if request.methon == "POST":
+        buscar = request.POST['buscar']
+        return render(request, "aplicacion/templates/aplicacion/users_search.html", {'buscar':buscar})
+    else:
+        return render(request, "aplicacion/templates/aplicacion/users_search.html")
 
 
 
@@ -35,14 +41,6 @@ class UserUpdate(UpdateView):
     model = User
     fields = ["nombre", "apellido", "email", "dni"]
     success_url = reverse_lazy("users")
-
-def buscar(request):
-    cadena = request.GET.get('cadena')
-    if cadena:
-        resultados = User.objects.filter(nombre__icontains=cadena)
-    else:
-        resultados = None
-    return render(request, 'users_search.html', {'resultados': resultados})
 
 #cheques
 class ChequesList(ListView):
